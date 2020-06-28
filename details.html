@@ -1,0 +1,65 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Details</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <form action="" method="POST">
+    <h1>Details</h1>
+    <fieldset>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="user_name">
+
+      <label for="gender">Gender:</label>
+      <input type="radio" id="male" value="Male" name="gender"><label for="gender" class="light">Male</label><br>
+      <input type="radio" id="female" value="Female" name="gender"><label for="gender" class="light">Female</label>
+
+      <label for="number">Phone Number:</label>
+      <input type="number" id="phone" name="number">
+
+      <label for="Age">Age:</label>
+      <select id="age" name="age">
+        <option value="" disabled selected>Select your age</option>
+        <option>18 to 24</option>
+        <option>25 to 34</option>
+        <option>35 to 44</option>
+        <option>45 to 54</option>
+        <option>55 to 64</option>
+      </select>
+
+      <label for="Address">Address:</label>
+      <textarea id="address" name="address"></textarea>
+    </fieldset>
+    <button type="button" onclick="showTableData()">Submit</button>
+  </form>
+
+</body>
+<script>
+  function showTableData() {
+    var radios = document.getElementsByName('gender');
+    for (var i = 0, length = radios.length; i < length; i++) {
+      if (radios[i].checked) {
+        // do whatever you want with the checked radio
+        var genders = (radios[i].value);
+
+        // only one radio can be logically checked, don't check the rest
+        break;
+      }
+    }
+
+    var name = document.getElementById('name').value;
+    var phone = document.getElementById('phone').value;
+    var age = document.getElementById('age').value;
+    var address = document.getElementById('address').value;
+    queryString = "?&para2=" + name + "&para2=" + genders + "&para2=" + phone + "&para2=" + age + "&para2=" + address;
+    window.location.href = "table.html" + queryString;
+  }
+</script>
+
+</html>
